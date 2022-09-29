@@ -7,7 +7,7 @@ import os,sys
 
 sess_id = sys.argv[1]
 dalle = Dalle2(sess_id)
-scale_factor = 0.9
+scale_factor = 0.8
 prompt = "forest leaves, photoreal"
 frames = 200
 
@@ -21,6 +21,11 @@ for i in range(0, frames):
 
     image = Image.open(src_file)
     m, n = image.size
+
+    # crop 10px around the image
+    image = image.crop((10, 10, m-10, n-10))
+    #resize to original size
+    image = image.resize((m, n), Image.ANTIALIAS)
 
     image_alpha = Image.new("RGBA", image.size, 0)
 
