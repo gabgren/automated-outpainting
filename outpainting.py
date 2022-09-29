@@ -3,9 +3,10 @@
 from dalle2 import Dalle2
 from PIL import Image, ImageDraw
 import urllib.request
-import os
+import os,sys 
 
-dalle = Dalle2("sess-LMJJXbwOdsRVFZhSkdFNqylXUznvvPI6vyfPGd01")
+sess_id = sys.argv[1]
+dalle = Dalle2(sess_id)
 scale_factor = 0.9
 prompt = "forest leaves, photoreal"
 frames = 200
